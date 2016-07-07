@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 
 import org.junit.Before;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,9 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CassandraConfiguration.class)
 public class Jsr310IntegrationTests {
+
+	@ClassRule
+	public final static RequiresCassandraKeyspace CASSANDRA_KEYSPACE = RequiresCassandraKeyspace.onLocalhost();
 
 	@Autowired OrderRepository repository;
 
